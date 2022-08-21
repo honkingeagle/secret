@@ -1,23 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
-
+import TabBar from './components/TabBar';
+import Chat from '../src/components/Chat'
+import TextArea from './components/TextArea';
+import MoreInfo from './components/MoreInfo';
+import {useState} from 'react'
 function App() {
+
+  const [darkMode, setDarkMode] = useState(false)
+  function toggleMode(mode) {
+    setDarkMode(mode)
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="h-screen text-[2rem] font-bold overflow-hidden">
+      <div className='h-full grid grid-cols-12'>
+        <TabBar 
+          mode={darkMode}
+          toggleMode={toggleMode}
+        />
+        <Chat 
+          mode={darkMode}
+        />
+        <TextArea 
+          mode={darkMode}
+        />
+        <MoreInfo />
+      </div>
     </div>
   );
 }

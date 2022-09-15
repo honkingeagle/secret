@@ -3,12 +3,13 @@ import Message from './Message'
 import {PaperAirplaneIcon} from '@heroicons/react/outline'
 
 function TextArea(props) {
-    const [formData, setFormData] = useState({message: ""})
+    const [formData, setFormData] = useState({name:"Tiras", message: "", createdAt: ""})
 
     function handleChange(event) {
         setFormData(prevFormData => {
             return {
                 ...prevFormData,
+                createdAt: Date.now(),
                 [event.target.name]: event.target.value
             }
         })
@@ -16,7 +17,10 @@ function TextArea(props) {
     function handleSubmit(event){
         event.preventDefault()
         console.log(formData)
+        props.sendMessage(formData)
     }
+
+    
     return (
         <div className={`h-screen bg-red-50 ${props.mode ? 'text-black':'text-red-400'} col-start-5 col-end-10 border-x-2 border-red-100`}>
             <div className="flex items-center text-[1rem] px-10 py-5 border-b-1 border-red-100">
@@ -26,9 +30,10 @@ function TextArea(props) {
                 </div>
             </div>
             <div className="chat overflow-y-auto flex flex-col h-3/4">
-                <Message 
-                    message={"Honey 😍"}
-                    time={"11:45AM"}
+                <Message
+                    name={props.chat.name} 
+                    message={props.chat.message}
+                    time={props.chat.createdAt}
                 />
                 <Message 
                     message={"Hi 😍"}

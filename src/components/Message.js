@@ -1,10 +1,10 @@
 function Message(props) {
     const styles = {
         ownerOfMessage: {
-            backgroundColor: props.ownerOfMessage === 'Tiras' ? 'bg-red-100' : 'bg-red-600',
-            textColor: props.ownerOfMessage === 'Tiras' ? 'text-red-700' :'text-white',
-            marginLeft: props.ownerOfMessage === 'Tiras' ? 'ml-auto' : 'ml-0',
-            timeTextColor: props.ownerOfMessage === 'Tiras' ? 'text-slate-900' : 'text-black',
+            backgroundColor: props.ownerOfMessage  ? 'bg-red-100' : 'bg-red-600',
+            textColor: props.ownerOfMessage  ? 'text-red-700' :'text-white',
+            marginLeft: props.ownerOfMessage  ? 'ml-auto' : 'ml-0',
+            timeTextColor: props.ownerOfMessage  ? 'text-slate-900' : 'text-white',
         }
     }
     return (

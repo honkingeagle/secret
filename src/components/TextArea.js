@@ -32,19 +32,22 @@ function TextArea(props) {
                 <Message 
                     message={"Honey 😍"}
                     time={"11:45AM"}
+                    ownerOfMessage={''}
                 />
                  <Message 
                     message={"I saw a creative design that i want you to see😁"}
                     time={"11:47AM"}
+                    ownerOfMessage={''}
                 />
                 <Message 
                     message={"Show me😁"}
                     time={"11:47AM"}
-                    ownerOfMessage={"Tiras"}
+                    ownerOfMessage={props.profileName}
                 />
                 <Message 
                     message={"Promise me you won't laugh😩"}
                     time={"11:47AM"}
+                    ownerOfMessage={''}
                 />
                 <Message 
                     message={"pinky promise🤝"}
@@ -54,6 +57,7 @@ function TextArea(props) {
                 <Message 
                     message={"Promise me you won't laugh😩"}
                     time={"11:47AM"}
+                    ownerOfMessage={''}
                 />
             </div>
             <div className="px-4 py-8 flex items-center">

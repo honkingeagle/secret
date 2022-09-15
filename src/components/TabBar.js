@@ -14,7 +14,7 @@ function TabBar(props) {
     }
         
     return (
-        <div className="h-screen bg-red-50 flex flex-col items-center p-5 border-r-2 border-red-100">
+        <div className="h-screen bg-red-50 flex flex-col font-bold items-center p-5 border-r-2 border-red-100">
             {/* <UserAddIcon className='w-14 hover:text-slate-400 cursor-pointer'/> */}
             <span>🔥</span>
             <div className='p-2 bg-red-400 mt-auto rounded-full items-center'>

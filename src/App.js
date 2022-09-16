@@ -3,6 +3,7 @@ import Chat from '../src/components/Chat'
 import TextArea from './components/TextArea';
 import MoreInfo from './components/MoreInfo';
 import {useEffect, useState} from 'react'
+import Login from './components/Login';
 function App() {
 
   const [darkMode, setDarkMode] = useState(false)
@@ -58,9 +59,9 @@ function App() {
       }
     }
   return (
-    <div className="h-screen font-semibold overflow-hidden">
-      <div className='h-full grid grid-cols-12'>
-        {profileName && (
+    <div className="h-screen tracking-wide overflow-hidden">
+      {profileName && ( <div className='h-full font-semibold grid grid-cols-12'>
+        
           <>
             <TabBar 
               mode={darkMode}
@@ -75,8 +76,14 @@ function App() {
             />
             <MoreInfo />
           </>
-        )}
+        
       </div>
+      )}
+      {!profileName && (
+        <Login 
+          connectWallet={connectWallet}
+        />
+      )}
     </div>
   );
 }

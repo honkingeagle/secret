@@ -70,11 +70,11 @@ function App() {
             <Chat 
               mode={darkMode}
             />
-            <TextArea
+            {/* <TextArea
               mode={darkMode}
               profileName={profileName}
-            />
-            <MoreInfo />
+            /> */}
+            {/* <MoreInfo /> */}
           </>
         
       </div>

@@ -1,26 +1,11 @@
 import TextTile from "./TextTile"
 function Chat(props) {
     return (
-        <div className={`text-[2rem] bg-red-50 ${props.mode ? 'text-black':'text-red-400'} col-start-2 col-end-5 px-7 py-5`}>
+        <div className={`text-[2rem] bg-red-50 ${props.mode ? 'text-black':'text-red-400'} col-span-full md:col-start-3 md:col-end px-7 pt-5 md:pb-2`}>
             Secret
             <div className="text-[1rem] h-full pt-5">
                 <h4 className="pb-10 border-b-1 border-red-100">All Messages</h4>
                 <div className="chat h-3/4 overflow-y-auto">
-                    <TextTile 
-                        nameOfChat={"EPL Fanatics"}
-                        message={"Golazo🤯"}
-                        time={"1:30PM"}
-                    />
-                    <TextTile 
-                        nameOfChat={"EPL Fanatics"}
-                        message={"Banaa"}
-                        time={"1:30PM"}
-                    />
-                    <TextTile 
-                        nameOfChat={"Tiras"}
-                        message={"Afternoon"}
-                        time={"12:00PM"}
-                    />
                     <TextTile 
                         nameOfChat={"Stacey"}
                         message={"Hi😍"}
@@ -34,16 +19,6 @@ function Chat(props) {
                     <TextTile 
                         nameOfChat={"Brian"}
                         message={"Fiti✊🏾"}
-                        time={"yesterday"}
-                    />
-                    <TextTile 
-                        nameOfChat={"Faith"}
-                        message={"Sawa😂"}
-                        time={"yesterday"}
-                    />
-                    <TextTile 
-                        nameOfChat={"Bachelor of Science"}
-                        message={"Assignment.txt"}
                         time={"yesterday"}
                     />
                 </div>

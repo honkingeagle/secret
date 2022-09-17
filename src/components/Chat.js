@@ -1,7 +1,7 @@
 import TextTile from "./TextTile"
 function Chat(props) {
     return (
-        <div className={`text-[2rem] bg-red-50 ${props.mode ? 'text-black':'text-red-400'} col-span-full md:col-start-3 md:col-end px-7 pt-5 md:pb-2`}>
+        <div className={`text-[2rem] bg-red-50 ${props.mode ? 'text-black':'text-red-400'} col-span-full md:col-start-3 md:col-end px-3 pt-5 md:pb-2`}>
             Secret
             <div className="text-[1rem] h-full pt-5">
                 <h4 className="pb-10 border-b-1 border-red-100">All Messages</h4>

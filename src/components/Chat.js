@@ -8,11 +8,11 @@ function Chat(props) {
             <div className="text-[1rem] h-full pt-5">
                 <h4 className="pb-10 border-b-1 border-red-100">All Messages</h4>
                 <div className="chat h-3/4 overflow-y-auto">
-                    <TextTile 
+                    {/* <TextTile 
                         nameOfChat={"Stacey"}
                         message={"Hi😍"}
                         time={"11:45AM"}
-                    />
+                    /> */}
                     <TextTile 
                         nameOfChat={"Lloyd"}
                         message={"Ayyee kiongozi😜"}

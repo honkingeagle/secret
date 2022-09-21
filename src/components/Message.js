@@ -8,11 +8,16 @@ function Message(props) {
         }
     }
     return (
-        <div className={`max-w-sm my-3 ${styles.ownerOfMessage.marginLeft} text-sm ${styles.ownerOfMessage.textColor} font-semibold px-10 flex`}>
+        <div className={`max-w-sm my-3 ${styles.ownerOfMessage.marginLeft} text-sm 
+                        ${styles.ownerOfMessage.textColor} font-semibold px-10 flex`}>
 
-            <div className={`flex flex-col shadow-xl rounded-tr-3xl rounded-bl-3xl mt-3 ${styles.ownerOfMessage.backgroundColor} p-6 opacity-70`}>
+            <div className={`flex flex-col shadow-xl rounded-tr-3xl rounded-bl-3xl mt-3 
+                            ${styles.ownerOfMessage.backgroundColor} p-6 opacity-70`}>
                 {props.message} 
-                <p className={`mt-3 ml-auto text-[.7rem] ${styles.ownerOfMessage.timeTextColor} font-semibold opacity-80`}>{props.time}</p>
+                <p className={`mt-3 ml-auto text-[.7rem] 
+                    ${styles.ownerOfMessage.timeTextColor} font-semibold opacity-80`}>
+                    {props.time}
+                </p>
             </div>
         </div>
     )

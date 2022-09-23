@@ -1,30 +1,41 @@
-// import TextArea from './components/TextArea';
+import TextArea from './components/TextArea';
 // import MoreInfo from './components/MoreInfo';
 import {useEffect, useReducer} from 'react'
 import Login from './components/Login'
 import TabBar from './components/TabBar'
 import Chat from './components/Chat'
 import {data} from './Data'
+// import Gun from 'gun'
+
+
+// const gun = Gun('http://localhost:5050/gun')
 
 const ACTION_TYPE = {
   SETDARKMODE: 'setDarkMode',
-  SETPROFILENAME: 'setProfileName'
+  SETPROFILENAME: 'setProfileName',
+  SETTEXTTILEPRESSED: 'setIsPressed'
 }
 const reducer = (state, action) => {
     switch(action.type){
       case ACTION_TYPE.SETDARKMODE: 
         return {...state, darkMode: !state.darkMode}
       case ACTION_TYPE.SETPROFILENAME:
-        return {...state, profileName: action.payload.profileName} 
+        return {...state, profileName: action.payload.profileName}
+      case ACTION_TYPE.SETTEXTTILEPRESSED:
+        return {...state, textTileIsPressed: action.payload.pressed}
       default:
         return state
     }
 }
-
+const initialState = {
+    darkMode: false,
+    profileName: '',
+    messages: [],
+    textTileIsPressed: false
+}
 
 function App() {
-
-  const [state, dispatch] = useReducer(reducer, {darkMode: false, profileName: ''})
+  const [state, dispatch] = useReducer(reducer, initialState)
   const checkIfWalletIsConnected = async () => {
     try {
       const { ethereum } = window
@@ -41,7 +52,9 @@ function App() {
       if (accounts.length !== 0) {
         const account = accounts[0]
         console.log(`Found an authorized account: ${account}`)
+
         dispatch({type:ACTION_TYPE.SETPROFILENAME, payload: {profileName: account}})
+
       } else {
         console.log("No authorized account found")
       }
@@ -50,9 +63,9 @@ function App() {
     }
   }
 
-    useEffect(() => {
-      checkIfWalletIsConnected()
-    },[])
+  useEffect(() => {
+    checkIfWalletIsConnected()
+  },[])
 
     const connectWallet = async () => {
       try {
@@ -84,11 +97,15 @@ function App() {
             <Chat
               data={data} 
               mode={state.darkMode}
+              textTileIsPressed={state.textTileIsPressed}
+              isPressed={() => dispatch({type:ACTION_TYPE.SETTEXTTILEPRESSED, payload: {pressed: true}})}
             />
-            {/* <TextArea
-              mode={darkMode}
-              profileName={profileName}
-            /> */}
+            <TextArea
+              mode={state.darkMode}
+              profileName={state.profileName}
+              textTileIsPressed={state.textTileIsPressed}
+              isPressed={() => dispatch({type:ACTION_TYPE.SETTEXTTILEPRESSED, payload: {pressed: false}})}
+            />
             {/* <MoreInfo /> */}
           </>
         

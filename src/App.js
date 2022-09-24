@@ -1,14 +1,9 @@
 import TextArea from './components/TextArea';
-// import MoreInfo from './components/MoreInfo';
 import {useEffect, useReducer} from 'react'
 import Login from './components/Login'
 import TabBar from './components/TabBar'
 import Chat from './components/Chat'
 import {data} from './Data'
-// import Gun from 'gun'
-
-
-// const gun = Gun('http://localhost:5050/gun')
 
 const ACTION_TYPE = {
   SETDARKMODE: 'setDarkMode',
@@ -85,9 +80,9 @@ function App() {
       }
     }
   return (
-    <div className="h-screen tracking-wide overflow-hidden">
+    <div className="max-h-screen tracking-wide overflow-hidden">
       {console.log(data)}
-      {state.profileName && ( <div className='h-full font-semibold grid grid-cols-12'>
+      {state.profileName && ( <div className='h-screen font-semibold grid grid-cols-12'>
         
           <>
             <TabBar 
@@ -106,7 +101,6 @@ function App() {
               textTileIsPressed={state.textTileIsPressed}
               isPressed={() => dispatch({type:ACTION_TYPE.SETTEXTTILEPRESSED, payload: {pressed: false}})}
             />
-            {/* <MoreInfo /> */}
           </>
         
       </div>

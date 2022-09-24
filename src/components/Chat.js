@@ -6,23 +6,23 @@ function Chat(props) {
     }
     
     return (
-        <div className={`text-[2rem] bg-red-50 
+        <div className={`text-[2rem] bg-red-50  h-screen
                 ${styles.mode} ${styles.display} col-span-full md:block 
-                md:col-start-1 md:col-end-6 lg:col-start-2 lg:col-end-6 px-3 pt-5 md:pb-2`}>
+                md:col-start-1 md:col-end-6 lg:col-start-2 lg:col-end-6 px-3 pt-5 md:pb-2 h-full `}>
             Secret
-            <div className="text-[1rem] h-full pt-5">
+            <div className="text-[1rem] pt-5">
                 <h4 className="pb-10 border-b-1 border-red-100">All Messages</h4>
-                <div className="chat h-3/4 overflow-y-auto">
-                    {/* <TextTile 
+                <div className="chat overflow-y-auto">
+                    <TextTile 
                         nameOfChat={"Stacey"}
                         message={"Hi😍"}
                         time={"11:45AM"}
-                    /> */}
+                        isPressed={() => props.isPressed()}
+                    />
                     <TextTile 
                         nameOfChat={"Lloyd"}
                         message={"Ayyee kiongozi😜"}
                         time={"9:00AM"}
-                        isPressed={() => props.isPressed()}
                     />
                     <TextTile 
                         nameOfChat={"Brian"}

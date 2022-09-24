@@ -25,12 +25,12 @@ function TextArea(props) {
 
     
     return (
-        <div className={`h-screen ${styles.display} col-span-full md:block bg-red-50 
+        <div className={`h-screen overflow-x-hidden ${styles.display} col-span-full md:block bg-red-50 
                     ${styles.mode}
                     md:col-start-6 md:col-end-13 border-x-2 border-red-100`}>
 
             <div className={`flex items-center text-[1rem] 
-                md:pl-5 py-5 border-b-1 border-red-100`}>
+                md:pl-5 md:py-5 py-3 border-b-1 border-red-100 sticky md:static`}>
 
                 <button className={`${styles.display} md:hidden`} onClick={props.isPressed}>
                         <ArrowSmLeftIcon className='h-8 w-8 mr-3'/>
@@ -56,7 +56,7 @@ function TextArea(props) {
                 <Message 
                     message={"Show me😁"}
                     time={"11:47AM"}
-                    ownerOfMessage={props.profileName}
+                    ownerOfMessage={'Tiras'}
                 />
                 <Message 
                     message={"Promise me you won't laugh😩"}
@@ -74,16 +74,17 @@ function TextArea(props) {
                     ownerOfMessage={''}
                 />
             </div>
-            <div className="px-1 py-8 flex items-center">
+            <div className="px-1 pt-3 md:py-6 flex items-center sticky md:static">
                 <div className="bg-red-200 h-6 w-6 rounded-full mx-2"><img src="#" alt="" /></div>
                 <form className="flex items-center w-full" onSubmit={handleSubmit}>
                     <input 
-                        className={`shadow-sm rounded-full w-full px-5 py-4`}
+                        className={`shadow-sm rounded-full w-full px-5 py-4 text-black`}
                         type="text"
                         placeholder="Message"
                         name="message"
                         onChange={handleChange}
-                        value={formData.value}
+                        value={formData.message}
+                        autoComplete="off"
                     />
                     <button><PaperAirplaneIcon className="h-8 w-8 mx-1"/></button>
                 </form>

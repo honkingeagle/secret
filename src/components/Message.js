@@ -8,8 +8,8 @@ function Message(props) {
         }
     }
     return (
-        <div className={`max-w-sm my-3 ${styles.ownerOfMessage.marginLeft} text-sm 
-                        ${styles.ownerOfMessage.textColor} font-semibold px-10 flex`}>
+        <div className={`max-w-[75%] md:max-w-sm my-3 ${styles.ownerOfMessage.marginLeft} text-sm 
+                        ${styles.ownerOfMessage.textColor} font-semibold px-5 md:px-10 flex`}>
 
             <div className={`flex flex-col shadow-xl rounded-tr-3xl rounded-bl-3xl mt-3 
                             ${styles.ownerOfMessage.backgroundColor} p-6 opacity-70`}>

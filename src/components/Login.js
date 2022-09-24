@@ -1,6 +1,6 @@
 function Login(props) {
     return (
-        <div className="h-full text-center bg-red-50 pt-16">
+        <div className="h-screen text-center bg-red-50 pt-16">
             <p className="py-4 text-5xl font-bold">Secret</p>
             <div className="text-2xl">
                 <p>Hi there, this is Secret</p>

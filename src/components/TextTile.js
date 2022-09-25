@@ -9,8 +9,8 @@ export default function TextTile(props) {
                     <p className='opacity-70 font-semibold'>{props.message}</p>
                 </div>
                 <div className="flex flex-col ml-auto items-end justify-end">
-                    <CheckIcon className='h-5 w-5 text-lime-600' />
                     <p className="text-sm font-semibold opacity-70">{props.time}</p>
+                    <CheckIcon className='h-4 w-4 text-lime-700' />
                 </div>
         </div>
     )

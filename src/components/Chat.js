@@ -15,8 +15,14 @@ function Chat(props) {
         <div className={`text-[2rem] bg-red-50  h-screen
                 ${styles.mode} ${styles.display} col-span-full md:block 
                 md:col-start-1 md:col-end-6 lg:col-start-2 lg:col-end-6 px-3 pt-5 md:pb-2 h-full `}>
+            
             {!isPressed && (<div>
-                Secret
+                 <div className="flex justify-between items:center">
+                    <p>Secret</p>
+                    <button className="bg-red-400 py-1 px-2 text-[1.1rem] text-white rounded-md" onClick={props.logOut} disabled={props.disabled}>
+                        LogOut
+                    </button>
+                 </div>
                 <div className="text-[1rem] pt-5">
                     <div className="pb-10 flex items-center border-b-1 border-red-100">
                         <h4 className="">All Messages</h4>
@@ -41,6 +47,7 @@ function Chat(props) {
                             message={"Fiti✊🏾"}
                             time={"yesterday"}
                         />
+                        
                     </div>
                 </div>
             </div>) }

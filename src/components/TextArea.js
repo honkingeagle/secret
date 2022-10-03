@@ -3,7 +3,8 @@ import Message from './Message'
 import {PaperAirplaneIcon, ArrowSmLeftIcon} from '@heroicons/react/outline'
 
 function TextArea(props) {
-    const [formData, setFormData] = useState({message: ""})
+    const [formData, setFormData] = useState({message: "", name: "Tiras"})
+    
     const styles = {
         display: props.textTileIsPressed ? 'block' : 'hidden',
         mode: props.mode ? 'text-black':'text-red-400',
@@ -17,9 +18,9 @@ function TextArea(props) {
             }
         })
     }
-    function handleSubmit(event){
+     function handleSubmit(event){
         event.preventDefault()
-        console.log(formData)
+        props.saveMessage(formData)
         setFormData({message: ""})
     }
 
@@ -37,7 +38,7 @@ function TextArea(props) {
                 </button>
                 <div className="bg-red-200 h-12 w-12 rounded-full"><img src="#" alt="" /></div>
                 <div className="ml-3 flex">
-                    <p className="text-red-500 text-[1.5rem]">Stacey</p>
+                    <p className="text-red-500 text-[1.5rem]">Lakeisha</p>
                 </div>
 
             </div>

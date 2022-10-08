@@ -3,7 +3,9 @@ import Message from './Message'
 import {PaperAirplaneIcon, ArrowSmLeftIcon} from '@heroicons/react/outline'
 
 function TextArea(props) {
-    const [formData, setFormData] = useState({message: "", name: "Tiras"})
+    const [formData, setFormData] = useState({message: ""})
+    const address = props.receipient
+    const shortenedAddress = address.slice(0,4)
     
     const styles = {
         display: props.textTileIsPressed ? 'block' : 'hidden',
@@ -20,16 +22,16 @@ function TextArea(props) {
     }
      function handleSubmit(event){
         event.preventDefault()
-        props.saveMessage(formData)
+        props.saveMessage(address, formData)
         setFormData({message: ""})
     }
 
     
     return (
-        <div className={`h-screen overflow-x-hidden ${styles.display} col-span-full md:block bg-red-50 
+        <div className={`h-screen overflow-x-hidden 
+                    ${styles.display} col-span-full md:block bg-red-50 
                     ${styles.mode}
                     md:col-start-6 md:col-end-13 border-x-2 border-red-100`}>
-
             <div className={`flex items-center text-[1rem] 
                 md:pl-5 md:py-5 py-3 border-b-1 border-red-100 sticky md:static`}>
 
@@ -37,14 +39,14 @@ function TextArea(props) {
                         <ArrowSmLeftIcon className='h-8 w-8 mr-3'/>
                 </button>
                 <div className="bg-red-200 h-12 w-12 rounded-full"><img src="#" alt="" /></div>
-                <div className="ml-3 flex">
-                    <p className="text-red-500 text-[1.5rem]">Lakeisha</p>
+                <div className="ml-6 flex">
+                    <p className="text-red-500 text-[1.5rem]">{`${props.receipientName ? `${props.receipientName}-` : ''}`}{shortenedAddress}</p>
                 </div>
 
             </div>
             <div className="chat overflow-y-auto flex flex-col h-3/4">
                 
-                <Message 
+                {/* <Message 
                     message={"Honey 😍"}
                     time={"11:45AM"}
                     ownerOfMessage={''}
@@ -73,7 +75,7 @@ function TextArea(props) {
                     message={"Promise me you won't laugh😩"}
                     time={"11:47AM"}
                     ownerOfMessage={''}
-                />
+                /> */}
             </div>
             <div className="px-1 pt-3 md:py-6 flex items-center sticky md:static">
                 <div className="bg-red-200 h-6 w-6 rounded-full mx-2"><img src="#" alt="" /></div>

@@ -3,12 +3,11 @@ import {useEffect, useReducer} from 'react'
 import Login from './components/Login'
 import TabBar from './components/TabBar'
 import Chat from './components/Chat'
-import {data} from './Data'
 import Gun from 'gun'
 
 const gun = Gun({
   peers: [
-    "http://localhost:3030/gun"
+    "http://localhost:5000/gun"
   ],
 })
 
@@ -25,9 +24,17 @@ const reducer = (state, action) => {
       case ACTION_TYPE.SETPROFILENAME:
         return {...state, profileName: action.payload.profileName}
       case ACTION_TYPE.SETTEXTTILEPRESSED:
-        return {...state, textTileIsPressed: action.payload.pressed}
+        return {
+          ...state, 
+          textTileIsPressed: action.payload.pressed, 
+          receipient: action.payload.receipient, 
+          receipientName: action.payload.receipientName}
+      // case ACTION_TYPE.SETMESSAGES:
+      //   return {...state, messages: action.payload.messages}
       case ACTION_TYPE.SETMESSAGES:
         return {...state, messages: [action.payload.messages, ...state.messages]}
+      case ACTION_TYPE.SETCONTACTS:
+        return {...state, contacts: [action.payload.contacts, ...state.contacts]}
       default:
         return state
     }
@@ -36,7 +43,10 @@ const initialState = {
     darkMode: false,
     profileName: '',
     messages: [],
-    textTileIsPressed: false
+    contacts: [],
+    textTileIsPressed: false,
+    receipient: '',
+    receipientName: ''
 }
 
 function App() {
@@ -91,36 +101,67 @@ function App() {
     }
   useEffect(() => {
       if (state.profileName) {
-        const messages = gun.get('messages')
-        messages.map(msg => (msg.from === state.profileName || msg.to === state.profileName
-          ) ? msg : 'No available chats'
-        ).once(m => {
-          dispatch({type: ACTION_TYPE.SETMESSAGES, payload: { messages: {
-            from: m.from,
-            to: m.to,
-            message: m.message,
-            createdAt: m.createdAt
-          }
-        }})
-      })
+      //   const contacts = gun.get(state.profileName).get('contacts')
+      //   contacts.map(ct => ct).once( c => {
+      //     dispatch({type: ACTION_TYPE.SETCONTACTS, payload: { contacts: {
+      //       contactName: c.contactName,
+      //       contactAddress:c.contactAddress
+      //     }}})
+      //   }
+      // )
+      //   const messages = gun.get('messages')
+      //   // const msg = []
+
+
+      //   messages.map().once(m => { 
+      //     // msg.unshift(m)
+      //     dispatch({type: ACTION_TYPE.SETMESSAGES, payload: { messages: {
+      //       from: m.from,
+      //       to: m.to,
+      //       message: m.message,
+      //       createdAt: m.createdAt
+      //     }}})
+
+      //   })
+      //   // console.log(msg)
+      //   // dispatch({type: ACTION_TYPE.SETMESSAGES, payload: { messages: msg}})
+
+      
     }else {
       console.log("You are not logged in")
     }
       
   },[state.profileName])
 
-  const saveMessage = (formData) => {
-    gun.get('messages').set({
-      from: state.profileName,
-      to: "0x228a5e9502e94cfe7bca43e76da42417c813f04d",
-      message: formData.message,
-      createdAt: "12:45AM"
-    })
+  const saveMessage = (address, formData) => {
+    // gun.get('messages').set({
+    //   from: state.profileName,
+    //   to: address,
+    //   message: formData.message,
+    //   createdAt: "12:45AM"
+    // })
+    console.log(formData)
   }
 
+  const saveContact = (formData) => {
+    // gun.get(state.profileName).get('contacts').set({
+    //   contactName: formData.contactName,
+    //   contactAddress: formData.contactAddress,
+    // })
+    console.log(formData)
+
+  }
+
+  const textTilePress = (address, name) => {
+    // dispatch({type:ACTION_TYPE.SETTEXTTILEPRESSED, payload: {
+    //   pressed: true, receipient: address, receipientName: name}})
+    console.log('Text tile pressed')
+  }
   return (
     <div className="max-h-screen tracking-wide overflow-hidden">
-      {console.log(state.messages)}
+      {/* {console.log(state.contacts)} */}
+      {/* {console.log(state.messages)} */}
+      {/* {console.log(state.profileName)} */}
       {state.profileName && ( <div className='h-screen font-semibold grid grid-cols-12'>
         
           <>
@@ -129,19 +170,24 @@ function App() {
               toggleMode={() => dispatch({type:ACTION_TYPE.SETDARKMODE})}
             />
             <Chat
-              data={data} 
+              profileName={state.profileName}
               mode={state.darkMode}
               messages={state.messages}
+              contacts={state.contacts}
+              saveContact={saveContact}
               // logOut={logOut}
               textTileIsPressed={state.textTileIsPressed}
-              isPressed={() => dispatch({type:ACTION_TYPE.SETTEXTTILEPRESSED, payload: {pressed: true}})}
+              textTilePress={textTilePress}
             />
             <TextArea
               mode={state.darkMode}
               profileName={state.profileName}
+              receipient={state.receipient}
+              receipientName={state.receipientName}
               saveMessage={saveMessage}
               textTileIsPressed={state.textTileIsPressed}
-              isPressed={() => dispatch({type:ACTION_TYPE.SETTEXTTILEPRESSED, payload: {pressed: false}})}
+              isPressed={() => dispatch({type:ACTION_TYPE.SETTEXTTILEPRESSED, payload: {
+                pressed: false, receipient: '', receipientName: ''}})}
             />
           </>
         

@@ -18,6 +18,8 @@ body {
 .chat {
   -ms-text-style: none;
   scrollbar-width: none;
+  /* background-image: url('./assets/secretNg.jpg'); */
+
 }
 
 code {

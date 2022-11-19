@@ -6,17 +6,10 @@ import { nanoid } from 'nanoid'
 
 function AvailableChats(props) {
     const [modalIsOpen, setIsOpen] = useState(false)
-
-    const openModal = () => {
-        setIsOpen(true)
-    }
-    const closeModal = () => {
-        setIsOpen(false)
-    }
-
+    console.log(props.contacts)
     const contacts = props.contacts.map(contact => (
         <ContactTile 
-            key={nanoid()}   
+            key={nanoid()}
             contact={contact}
             textTilePress={props.textTilePress}
         />
@@ -28,12 +21,17 @@ function AvailableChats(props) {
                     <button onClick={() => props.isPressed(false)}><ArrowSmLeftIcon className='h-8 w-8 mr-3' /></button>
                     <p>Chats</p>
                 </div>
-                {!modalIsOpen && (<button onClick={openModal}><PlusIcon className="h-7 w-7"/></button>)}
-                {modalIsOpen && (<button onClick={closeModal}><XIcon className="h-7 w-7"/> </button>)}
+                {!modalIsOpen && (<button onClick={() => setIsOpen(true)}>
+                    <PlusIcon className="h-7 w-7"/></button>
+                )}
+                {modalIsOpen && (<button onClick={() => setIsOpen(false)}>
+                    <XIcon className="h-7 w-7"/> 
+                </button>)}
                 {modalIsOpen && (
                 <Modal
-                  saveContact={props.saveContact} 
-                  closeModal={closeModal}
+                  saveContact={props.saveContact}
+                  profileName={props.profileName}
+                  closeModal={() => setIsOpen(false)}
                 />)}
             </div>
             {contacts}

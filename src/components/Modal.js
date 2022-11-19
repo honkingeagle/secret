@@ -2,7 +2,6 @@ import {useState} from 'react'
 function Modal (props) {
     const [formData, setFormData] = useState({contactName: "", contactAddress: ""})
 
-
     const handleChange = (event) => {
         setFormData(prevFormData => {
             return {

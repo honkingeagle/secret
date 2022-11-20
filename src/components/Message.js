@@ -8,7 +8,7 @@ function Message(props) {
         }
     }
     return (
-        <div className={`max-w-[75%] md:max-w-sm my-3 ${styles.ownerOfMessage.marginLeft} text-sm 
+        <div className={`max-w-[75%] md:max-w-sm my-3 ${styles.ownerOfMessage.marginLeft} text-m
                         ${styles.ownerOfMessage.textColor} font-semibold px-5 md:px-10 flex`}>
 
             <div className={`flex flex-col shadow-xl rounded-tr-3xl rounded-bl-3xl mt-3 

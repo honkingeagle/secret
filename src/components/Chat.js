@@ -16,7 +16,7 @@ function Chat(props) {
     }
 
 return (
-    <div className={`text-[2rem] bg-red-50  h-screen
+    <div className={`secretChat text-[2rem] bg-red-50  h-screen
                 ${styles.mode} ${styles.display} col-span-full md:block 
                 md:col-start-1 md:col-end-6 lg:col-start-2 lg:col-end-6 px-3 pt-5 md:pb-2 h-full `}>
         {!isPressed && (<div>
@@ -33,13 +33,14 @@ return (
                         <BsFillPersonPlusFill className="h-6 w-6" />
                     </button>
                 </div>
-                <div className="chat overflow-y-auto">
+                <div className="chatter overflow-y-auto">
                     {
                         Object.keys(props.data).map((contact,i)=>(
                             <TextTile
                                 key={i}
                                 profileImage={props.profileImage} 
                                 contact={contact}
+                                contacts={props.contacts}
                                 messages={props.data[contact]}
                                 isPressed={props.textTilePress}
                             />
@@ -52,6 +53,7 @@ return (
             <AvailableChats
                 saveContact={props.saveContact}
                 profileName={props.profileName}
+                data={props.data}
                 isPressed={changeScreen}
                 contacts={props.contacts}
                 textTilePress={props.textTilePress}

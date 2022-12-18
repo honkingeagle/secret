@@ -3,11 +3,10 @@ import { useState } from "react"
 
 function ContactTile(props) {
     const [copied, IsCopied] = useState(false)
-    const address = props.contact.contactAddress
+    const address = props.contact.contactAddress.toLowerCase()
     const name = props.contact.contactName
 
     const shortenedAddress = address.slice(0, 4)
-
     const copyAddressToClipboard = () => {
         navigator.clipboard.writeText(address)
         IsCopied(true)
@@ -16,7 +15,7 @@ function ContactTile(props) {
         }, 3000)
     }
     return (
-        <div className=" text-slate-900 flex justify-between items-center py-4 text-[1.1rem] my-4">
+        <div className=" text-slate-900 flex justify-between items-center py-4  my-4">
             <div className="cursor-pointer" onClick={() => props.textTilePress(address, name)}>
                 <p>{name}-{shortenedAddress}</p>
             </div>

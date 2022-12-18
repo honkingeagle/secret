@@ -16,7 +16,7 @@ function TabBar(props) {
     }
         
     return (
-        <div className="h-screen bg-red-50 hidden 
+        <div className=" h-screen bg-red-50 hidden 
                 lg:flex flex-col lg:col-start-1 lg:col-end-2 
                 font-bold items-center py-5 border-r-2 border-red-100">
             <button onClick={props.logOut}>

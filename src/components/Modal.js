@@ -12,10 +12,13 @@ function Modal (props) {
     }
     const handleSubmit = (event) => {
         event.preventDefault()
-        console.log(formData)
-        props.saveContact(formData)
-        setFormData({contactName: "", contactAddress: ""})
-        props.closeModal()
+        const res = props.saveContact(formData)
+        if(res) {
+            setFormData({contactName: "", contactAddress: ""})
+            props.closeModal()
+        } else {
+            alert("Address should have 16 digits")
+        }
     }
 
      

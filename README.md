@@ -1,2 +1,2 @@
 # Secret
-A decentalized messaging web app
+A decentralized messaging web app

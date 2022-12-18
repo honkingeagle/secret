@@ -1,14 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+@import url('https://fonts.googleapis.com/css2?family=Handlee&display=swap');
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    sans-serif; */
+    font-family: 'Handlee', cursive;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 .chat::-webkit-scrollbar {
@@ -18,11 +20,36 @@ body {
 .chat {
   -ms-text-style: none;
   scrollbar-width: none;
-  /* background-image: url('./assets/secretNg.jpg'); */
+  background-image: url('./assets/wallpaper.png');
+}
+.tab {
+  background-image:  url('./assets/rect.png');
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size:  20rem;
+}
 
+.chatter::-webkit-scrollbar {
+  display: none;
+}
+
+.chatter {
+  -ms-text-style: none;
+  scrollbar-width: none;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.shape {
+  background-image:  url('./assets/reverseShape.png'), url('./assets/rect.png');
+  background-size:  7rem, 20rem;
+  background-repeat: no-repeat;
+  background-position: right 10px, left bottom;
+}
+
+.message {
+  background-image: url('./assets/wallpaper.png');
 }

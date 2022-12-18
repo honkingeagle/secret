@@ -57,13 +57,8 @@ const initialState = {
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState)
   let svg = createAvatar(style, {
-    seed: 'custom-seed',
+    seed: state.profileName,
     dataUri: true,
-    eyes: ['variant14'],
-    skinColor: ['variant03'],
-    hair: ['long12'],
-    mouth: ['variant02']
-    // ... and other options
 })
 const checkIfWalletIsConnected = async () => {
   try {
@@ -154,7 +149,6 @@ useEffect(() => {
         }
     })
 
-
     const msgsTo={}
     contacts.forEach(contact=>{
         const myMsgs = []
@@ -168,7 +162,7 @@ useEffect(() => {
         msgsTo[contact] = myMsgs
       })
       
-  
+      
   const saveMessage = (address, formData) => {
     gun.get('messages').set({
       from: state.profileName,
@@ -176,20 +170,20 @@ useEffect(() => {
       message: formData.message,
       createdAt: moment().toLocaleString()
     })
-    console.log(formData)
   }
 
   const saveContact = (formData) => {
+    if(formData.contactAddress.length < 16) {
+      return false
+    }
     gun.get(state.profileName).get('contacts').set({
       contactName: formData.contactName,
       contactAddress: formData.contactAddress,
     })
-    console.log(formData)
-
+    return true
   }
 
   const logOut = async () => {
-    console.log("logged out")
     dispatch({type:ACTION_TYPE.SETPROFILENAME, payload: {profileName: ""}})
   }
 
@@ -197,9 +191,8 @@ useEffect(() => {
     dispatch({type:ACTION_TYPE.SETTEXTTILEPRESSED, payload: {
       pressed: true, receipient: address, receipientName: name}})
   }
-  console.log(state.messages)
   return (
-    <div className="max-h-screen tracking-wide overflow-hidden">
+    <div className="max-h-screen tracking-wide overflow-hidden tracking-widest">
       
       {state.profileName && ( <div className='h-screen font-semibold grid grid-cols-12'>
         
@@ -224,6 +217,7 @@ useEffect(() => {
               profileName={state.profileName}
               data={msgsTo}
               save={saveMessage}
+              saveContact={saveContact}
               profileImage={svg}
               receipient={state.receipient}
               receipientName={state.receipientName}
